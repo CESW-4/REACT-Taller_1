@@ -1,14 +1,17 @@
 import AddToCart from './AddToCart'
-const Product = ({ id, name, price, quantityAvailable, description, imageUrl }) => {
+import ImageProduct from './ImageProduct';
+const Product = ({ product,products,setproducts }) => {
     return (
         <div>
-            <p>{id}</p>
-            <p>{name}</p>
-            <p>{price}</p>
-            <p>{quantityAvailable}</p>
-            <p>{description}</p>
-            <p>{imageUrl}</p>
-            <AddToCart/>
+            {/* <p>{id}</p> */}
+            <ImageProduct url={product.imageUrl}/>
+            <div className='desc-product'>
+                <h2>{product.name}</h2>
+                <p>{product.price}</p>
+                <p>{product.quantityAvailable}</p>
+                <p>{product.description}</p>
+                <AddToCart setproducts={setproducts} products={products} product={product}/>
+            </div>
         </div>
     );
 };
