@@ -1,8 +1,8 @@
 import { useEffect , useState } from "react";
+import ProductListInCart from "./ProductListInCart";
 
-
-const Cart = ({productsInCart}) => {
-    const [Cupon, setCupon] = useState("");
+const Cart = ({productsInCart,setproductsInCart}) => {
+    const [Cupon, setCupon] = useState(0);
     const [SummaryInfo, setSummaryInfo] = useState({
         subtotal:productsInCart.reduce((previous,current)=>current.price+previous,0),
         total(){
@@ -27,7 +27,6 @@ const Cart = ({productsInCart}) => {
         setCupon(Number(value));
         setSummaryInfo({...SummaryInfo})
     }
-
     return (
         <div>
             <div className="products-info">
@@ -35,7 +34,7 @@ const Cart = ({productsInCart}) => {
                     <h2>Shopping Cart</h2>
                 </header>
                 <hr />
-
+                <ProductListInCart productsIncart={productsInCart} setproductsInCart={setproductsInCart} />
             </div>
             <div className="invoice-info">
                 <header>

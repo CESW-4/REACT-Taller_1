@@ -1,6 +1,6 @@
 import AddToCart from './AddToCart'
 import ImageProduct from './ImageProduct';
-const Product = ({ product,products,setproductsInCart,productsInCart }) => {
+const Product = ({ product,setproductsInCart,productsInCart }) => {
     return (
         <div>
             <ImageProduct url={product.imageUrl}/>
@@ -12,7 +12,6 @@ const Product = ({ product,products,setproductsInCart,productsInCart }) => {
                 <AddToCart 
                     setproductsInCart={setproductsInCart} 
                     productsInCart={productsInCart} 
-                    products={products} 
                     product={product}/>
             </div>
         </div>

@@ -1,15 +1,15 @@
-const AddToCart = ({products,product,productsInCart,setproductsInCart}) => {
+const AddToCart = ({product,productsInCart,setproductsInCart}) => {
 
 	const handleAddCart=()=>{
 		let flag=true;
 		if(productsInCart.some(item=>item.id===product.id)){
 			const indexProduct=productsInCart.findIndex(item=>item.id===product.id);
-			const productInCar=productsInCart[indexProduct];
+			const productInCart=productsInCart[indexProduct];
 			// Valida si aun hay unidades del producto seleccionado
-			if(productInCar.quantityAvailable>productInCar.quantityAdded){
+			if(productInCart.quantityAvailable>productInCart.quantityAdded){
 				productsInCart[indexProduct]={
-					...productInCar,
-					quantityAdded:productInCar.quantityAdded+1
+					...productInCart,
+					quantityAdded:Number(productInCart.quantityAdded)+1
 				};
 			}else{
 				flag=false;
