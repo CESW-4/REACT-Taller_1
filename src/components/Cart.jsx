@@ -1,8 +1,32 @@
-import { useState } from "react";
+import { useEffect , useState } from "react";
 
-const Cart = () => {
-    const [product, setproduct] = useState([]);
-    const [invoiceInfo, setinvoiceInfo] = useState([]);
+
+const Cart = ({productsInCart}) => {
+    const [Cupon, setCupon] = useState("");
+    const [SummaryInfo, setSummaryInfo] = useState({
+        subtotal:productsInCart.reduce((previous,current)=>current.price+previous,0),
+        total(){
+            return this.subtotal-(Cupon/100)*this.subtotal;
+        }
+    });
+
+    useEffect(() => {
+        setSummaryInfo({
+            ...SummaryInfo,
+            total(){
+                return this.subtotal-(Cupon/100)*this.subtotal;
+            }
+        })
+    }, [Cupon])
+    
+    
+
+    const handleCupon=({target})=>{
+        const {value} = target;
+        if(Number(value)<0 || Number(value)>100) return;
+        setCupon(Number(value));
+        setSummaryInfo({...SummaryInfo})
+    }
 
     return (
         <div>
@@ -18,22 +42,24 @@ const Cart = () => {
                     <h2>Summary</h2>
                 </header>
                 <hr />
-                
+
                 <section>
                     <form>
                         <input 
                             type="number"
                             placeholder="Ingresa numero de cupon"
+                            onChange={(e)=>handleCupon(e)}
+                            value={Cupon}
                             />
                     </form>
                     <hr />
                     <div className="desc-invoice">
-                        <p>SUBTOTAL <span>$600</span></p>
+                        <p>SUBTOTAL <span>${SummaryInfo.subtotal}</span></p>
                         <p>SHIPPING <span>FREE</span></p>
-                        <p>COUPON <span>$10</span></p>
+                        <p>COUPON <span>${Cupon}</span></p>
                     </div>
                     <hr />
-                    <h3>TOTAL <span>$590</span></h3>
+                    <h3>TOTAL <span>${SummaryInfo.total()}</span></h3>
                 </section>
             </div>
         </div>

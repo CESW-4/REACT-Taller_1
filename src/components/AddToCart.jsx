@@ -1,16 +1,36 @@
-const AddToCart = ({setproducts,products,product}) => {
+const AddToCart = ({products,product,productsInCart,setproductsInCart}) => {
 
 	const handleAddCart=()=>{
-		
-		if(product.quantityAvailable){
-			const newQuantityAvailable=product.quantityAvailable-1;
-			const productUpdate={...product,quantityAvailable:newQuantityAvailable};
-
-			const indexProduct=products.findIndex(item=>item.id===product.id);
-			products[indexProduct]=productUpdate;
-			setproducts([...products]);
+		let flag=true;
+		if(productsInCart.some(item=>item.id===product.id)){
+			const indexProduct=productsInCart.findIndex(item=>item.id===product.id);
+			const productInCar=productsInCart[indexProduct];
+			// Valida si aun hay unidades del producto seleccionado
+			if(productInCar.quantityAvailable>productInCar.quantityAdded){
+				productsInCart[indexProduct]={
+					...productInCar,
+					quantityAdded:productInCar.quantityAdded+1
+				};
+			}else{
+				flag=false;
+			}
+			
 		}else{
-			alert("No hay mas productos")
+			// Valida que inicialmente hayan unidades mayores a 0
+			if(product.quantityAvailable>0){
+				productsInCart.unshift({
+					...product,
+					quantityAdded:1,
+				});
+			}else{
+				flag=false;
+			}
+		}
+
+		if(flag){
+			setproductsInCart([...productsInCart]);
+		}else{
+			alert("No hay unidades disponibles");
 		}
 	}
 
