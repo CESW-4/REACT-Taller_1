@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 
 const btnQuantity = ({setproductsInCart,productsInCart,product,setSummaryInfo,SummaryInfo,Cupon}) => {
-<<<<<<< HEAD
+
   // Variables que nos contribuiran para mostrar los datos de 
-=======
->>>>>>> a95bec001f91b52f417f9db238657d380d0589a7
+
   const indexProduct=productsInCart.findIndex(item=>item.id===product.id);
   const productInCart=productsInCart[indexProduct];
 
@@ -37,25 +36,25 @@ const btnQuantity = ({setproductsInCart,productsInCart,product,setSummaryInfo,Su
     // Si la cantidad de unidades de algun producto en el carrito es 0 se saca del carrito
     productsInCart=removeProductsInCar();
 
-<<<<<<< HEAD
+
     // Se modifican los valores de la factura dependiendo de las unidades del producto actual
     setSummaryInfo({
         ...SummaryInfo,
         subtotal:productsInCart.reduce((previous,current)=>(current.price*current.quantityAdded)+previous,0),
         total(){
-            return this.subtotal-(Number(Cupon)/100)*this.subtotal;
+            return this.subtotal-Cupon;
         }
     })
 
-=======
+
     setSummaryInfo({
       ...SummaryInfo,
       subtotal:productsInCart.reduce((previous,current)=>(current.price*current.quantityAdded)+previous,0),
       total(){
-          return this.subtotal-(Number(Cupon)/100)*this.subtotal;
+          return this.subtotal-Cupon;
       }
   })
->>>>>>> a95bec001f91b52f417f9db238657d380d0589a7
+
 		if(flag){
 			setproductsInCart([...productsInCart]);
 		}else{

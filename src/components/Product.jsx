@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react';
 import AddToCart from './AddToCart'
 import ImageProduct from './ImageProduct';
 const Product = ({ product,setproductsInCart,productsInCart }) => {
-<<<<<<< HEAD
+
     // Variables y hooks que contribuiran a mostrar las unidades disponibles del producto actual
-=======
->>>>>>> a95bec001f91b52f417f9db238657d380d0589a7
+
     const productInCart=productsInCart.filter(item=>item.id===product.id)[0];
     const [Quantity, setQuantity] = useState(product.quantityAvailable-(productInCart?.quantityAdded || 0) );
 
