@@ -42,13 +42,13 @@ const Cart = ({productsInCart,setproductsInCart}) => {
                 <header className="site-header">
                     <h2>Shopping Cart</h2>
                 </header>
-                <ProductListInCart 
+                {<ProductListInCart 
                     productsIncart={productsInCart} 
                     setproductsInCart={setproductsInCart}
                     setSummaryInfo={setSummaryInfo}
                     SummaryInfo={SummaryInfo}
                     Cupon={Cupon}
-                    />
+                    />}
             </div>
             <div className="invoice-info">
                 <header>

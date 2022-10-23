@@ -26,16 +26,19 @@ body{
 .btn {
     @include Btn(100%,40px);
     transition: transform .3s ease-in-out;
-    &.disabled{
-        background-color: initial;
-        cursor: initial;
-        border: 1px solid gray
-    }
     &.btn-primary{
         @include primaryBtn();
+        &.disabled{
+            background-color: $red-disabled;
+            cursor: initial;
+        }
     }
     &.btn-secondary{
         @include secondaryBtn();
+        &.disabled{
+            background-color: $black-disabled;
+            cursor: initial;
+        }
     }
 }
 .inpt{
@@ -48,6 +51,8 @@ body{
 .regular{
     font-weight: 500;
 }
+
+
 
 .bold{
     font-weight: bolder;
