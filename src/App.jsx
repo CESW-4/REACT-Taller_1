@@ -12,6 +12,7 @@ function App() {
   ];
 
   const [productsInCart, setproductsInCart] = useState([]);
+  // hook para mostrar o esconder el carrito
   const [showCart, setshowCart] = useState(false);
 
   return (
@@ -20,7 +21,6 @@ function App() {
         <img src="./nike.png"/>
         <CartBtn quantityProducts={productsInCart.length} showCart={showCart} setshowCart={setshowCart}/>
       </header>
-        {/* <hr /> */}
       { !showCart 
         ?
           <ProductList 
@@ -30,7 +30,6 @@ function App() {
         :
           <Cart productsInCart={productsInCart} setproductsInCart={setproductsInCart}/>
       }
-
     </div>
   )
 }
