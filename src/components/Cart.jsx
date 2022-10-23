@@ -2,11 +2,13 @@ import { useEffect , useState } from "react";
 import ProductListInCart from "./ProductListInCart";
 
 const Cart = ({productsInCart,setproductsInCart}) => {
+    // Hook que contendra la info del cupon
     const [Cupon, setCupon] = useState(0);
+    // Hook que contendra la info de la factura
     const [SummaryInfo, setSummaryInfo] = useState({
-        subtotal:productsInCart.reduce((previous,current)=>current.price+previous,0),
+        subtotal:productsInCart.reduce((previous,current)=>(current.price*current.quantityAdded)+previous,0),
         total(){
-            return this.subtotal-(Cupon/100)*this.subtotal;
+            return this.subtotal-(Number(Cupon)/100)*this.subtotal;
         }
     });
 
@@ -14,55 +16,66 @@ const Cart = ({productsInCart,setproductsInCart}) => {
         setSummaryInfo({
             ...SummaryInfo,
             total(){
-                return this.subtotal-(Cupon/100)*this.subtotal;
+                return this.subtotal-(Number(Cupon)/100)*this.subtotal;
             }
         })
     }, [Cupon])
     
     
-
+    /**
+     * Funcion intermediaria que modifica el valor del Cupon con el valor digitado
+     * @param {*} param0 
+     * @returns 
+     */
     const handleCupon=({target})=>{
         const {value} = target;
-        if(Number(value)<0 || Number(value)>100) return;
+        if(Number(value)<0 || Number(value)>100) {
+            alert("Solo se permiten numeros entre 0 y 100");
+            return;
+        }
         setCupon(Number(value));
-        setSummaryInfo({...SummaryInfo})
+        setSummaryInfo({...SummaryInfo});
     }
     return (
-        <div>
-            <div className="products-info">
-                <header>
+        <div className="cart_info">
+            <div>
+                <header className="site-header">
                     <h2>Shopping Cart</h2>
                 </header>
-                <hr />
-                <ProductListInCart productsIncart={productsInCart} setproductsInCart={setproductsInCart} />
+                <ProductListInCart 
+                    productsIncart={productsInCart} 
+                    setproductsInCart={setproductsInCart}
+                    setSummaryInfo={setSummaryInfo}
+                    SummaryInfo={SummaryInfo}
+                    Cupon={Cupon}
+                    />
             </div>
             <div className="invoice-info">
                 <header>
                     <h2>Summary</h2>
                 </header>
-                <hr />
 
                 <section>
                     <form>
                         <input 
-                            type="number"
+                            type="text"
+                            className="inpt"
                             placeholder="Ingresa numero de cupon"
                             onChange={(e)=>handleCupon(e)}
                             value={Cupon}
                             />
                     </form>
-                    <hr />
                     <div className="desc-invoice">
-                        <p>SUBTOTAL <span>${SummaryInfo.subtotal}</span></p>
-                        <p>SHIPPING <span>FREE</span></p>
-                        <p>COUPON <span>${Cupon}</span></p>
+                        <p>SUBTOTAL: <span className="text-red">${SummaryInfo.subtotal}</span></p>
+                        <p>SHIPPING: <span className="text-red">FREE</span></p>
+                        <p>COUPON: <span className="text-red">${Cupon}</span></p>
                     </div>
                     <hr />
-                    <h3>TOTAL <span>${SummaryInfo.total()}</span></h3>
+                    <h3>TOTAL: <span className="text-red">${SummaryInfo.total()}</span></h3>
                 </section>
             </div>
         </div>
     );
 }
 
-export default Cart
+export default Cart;

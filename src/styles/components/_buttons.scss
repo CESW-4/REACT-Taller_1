@@ -1,0 +1,22 @@
+@mixin primaryBtn(){
+    background-color: $red;
+    color: $white;
+}
+
+@mixin secondaryBtn(){
+    background-color: $black ;
+    border: 1px solid $white;
+    color: $white;
+}
+
+@mixin Btn($w,$h){
+    width: $w;
+    height:$h;
+    padding: 0 2rem;
+    border-radius: .6rem;
+    border: none;
+    font-weight: $fw-semibold;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+

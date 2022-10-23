@@ -1,0 +1,13 @@
+@mixin input($w,$h){
+    width: $w;
+    height:$h;
+    padding: 0 2rem;
+    border-radius: .6rem;
+    border: 1px solid $white;
+    background-color: transparent;
+    color: $white;
+    font-weight: $fw-semibold;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+

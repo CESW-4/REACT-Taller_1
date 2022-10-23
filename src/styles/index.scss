@@ -1,0 +1,134 @@
+@import "components/buttons";
+@import "components/config";
+@import "components/cardProduct";
+@import "components/input";
+
+body{
+    background:$black-mate ;
+    font-family: $main-font;
+    font-size: 1.6rem;
+    color: $white;
+}
+
+// Utilities
+
+.container{
+    max-width: 120rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.container-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn {
+    @include Btn(100%,40px);
+    transition: transform .3s ease-in-out;
+    &.disabled{
+        background-color: initial;
+        cursor: initial;
+        border: 1px solid gray
+    }
+    &.btn-primary{
+        @include primaryBtn();
+    }
+    &.btn-secondary{
+        @include secondaryBtn();
+    }
+}
+.inpt{
+    @include input(90%,40px);
+}
+.light{
+    font-weight: 200;
+}
+
+.regular{
+    font-weight: 500;
+}
+
+.bold{
+    font-weight: bolder;
+}
+.text-red{
+    color: $red;
+}
+.ml-1{
+    margin-left: 1rem;
+}
+.center-flex{
+    display: flex;
+    flex-direction: column;
+}
+// Styles
+
+.product_list{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    overflow: auto;
+    max-height: 80vh;
+}
+
+.site-header{
+    background-color: $black-mate;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:.5rem 0 ;
+    margin-bottom: 1rem;
+    img{
+        width: 10rem;
+    }
+    .btn{
+        width: auto;
+        height: 5rem;
+        position: relative;
+        .bubble{
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            border-radius: 30%;
+            background-color: $red;
+            padding: .5rem;
+            font-size: 1.3rem;
+        }
+    }
+}
+
+.container_btnquantity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p{
+        margin: 0 2rem ;
+        margin-bottom: 0!important;
+    }
+    .btn{
+        width: 1rem;
+        background-color: $black-mate;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.cart_info{
+    display: flex;
+    .product_list{
+        width: 90rem;
+        height: 70vh;
+        margin-right: 2rem;
+    }
+    .invoice-info{
+        width: 30rem;
+        *{
+            margin-bottom: 1rem;
+        }
+        h2{
+            text-align: center;
+        }
+    }
+}

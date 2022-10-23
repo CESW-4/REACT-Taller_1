@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap');
 // Colors
 $black-mate:#242424;
-
+$black:#1a1a1a;
+$red:#F30B31;
+$white: #fff;
 // Fonts
 $main-font:'Poppins', sans-serif;
 
@@ -15,6 +17,15 @@ $fw-bold:600;
 // size
 html{
     font-size: 62.5%;
+}
+
+// General configs
+*{
+    margin: 0;
+    padding: 0;
+}
+img{
+    max-width: 100%;
 }
 
 // Responsive
