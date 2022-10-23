@@ -8,7 +8,7 @@ const Cart = ({productsInCart,setproductsInCart}) => {
     const [SummaryInfo, setSummaryInfo] = useState({
         subtotal:productsInCart.reduce((previous,current)=>(current.price*current.quantityAdded)+previous,0),
         total(){
-            return this.subtotal-(Number(Cupon)/100)*this.subtotal;
+            return this.subtotal-Cupon;
         }
     });
 
@@ -16,7 +16,7 @@ const Cart = ({productsInCart,setproductsInCart}) => {
         setSummaryInfo({
             ...SummaryInfo,
             total(){
-                return this.subtotal-(Number(Cupon)/100)*this.subtotal;
+                return this.subtotal-Cupon;
             }
         })
     }, [Cupon,productsInCart])

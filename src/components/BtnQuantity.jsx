@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const btnQuantity = ({setproductsInCart,productsInCart,product,setSummaryInfo,SummaryInfo,Cupon}) => {
-  // Variables que nos contribuiran para mostrar los datos de 
+  // Variables que nos contribuiran para mostrar los datos de la cantidad de productos
   const indexProduct=productsInCart.findIndex(item=>item.id===product.id);
   const productInCart=productsInCart[indexProduct];
   // Variable para deshabilitar los botones en caso de que no hayan mas unidades de un producto
@@ -40,7 +40,7 @@ const btnQuantity = ({setproductsInCart,productsInCart,product,setSummaryInfo,Su
         ...SummaryInfo,
         subtotal:productsInCart.reduce((previous,current)=>(current.price*current.quantityAdded)+previous,0),
         total(){
-            return this.subtotal-(Number(Cupon)/100)*this.subtotal;
+            return this.subtotal-Cupon;
         }
     })
 
