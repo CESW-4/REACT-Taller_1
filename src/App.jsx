@@ -1,6 +1,5 @@
 import ProductList from './components/ProductList';
 import { useState } from 'react';
-import './App.css';
 import CartBtn from './components/CartBtn';
 import Cart from './components/Cart';
 
@@ -16,8 +15,12 @@ function App() {
   const [showCart, setshowCart] = useState(false);
 
   return (
-    <>
-      <CartBtn quantityProducts={productsInCart.length} showCart={showCart} setshowCart={setshowCart}/>
+    <div className='container'>
+      <header className='site-header'> 
+        <img src="./nike.png"/>
+        <CartBtn quantityProducts={productsInCart.length} showCart={showCart} setshowCart={setshowCart}/>
+      </header>
+        {/* <hr /> */}
       { !showCart 
         ?
           <ProductList 
@@ -28,7 +31,7 @@ function App() {
           <Cart productsInCart={productsInCart} setproductsInCart={setproductsInCart}/>
       }
 
-    </>
+    </div>
   )
 }
 

@@ -1,6 +1,6 @@
 const ImageProduct = ({url}) => {
     return (
-        <img src= {url}/>
+        <figure> <img src= {url}/></figure>
     );
 };
 

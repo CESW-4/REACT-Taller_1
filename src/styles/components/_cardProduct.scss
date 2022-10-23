@@ -1,0 +1,28 @@
+.card_product{
+    display: flex;
+    flex-direction: column;
+    flex-basis: calc(33.3% - 1rem);
+    background-color: $black;
+    border-radius: 4px;
+    height: auto;
+    figure{
+        border-radius: 4px 4px 0 0;
+        overflow: hidden;
+        height: 35rem;
+        img{
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+            &:hover{
+                transform: scale(1.1);
+                transition: .3s ease-in-out;
+            }
+        }
+    }
+    .desc_product{
+        padding: 1rem;
+        *:not(button){
+            margin-bottom: 1rem;
+        }
+    }
+}

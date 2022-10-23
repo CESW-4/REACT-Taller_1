@@ -9,7 +9,7 @@ const AddToCart = ({product,productsInCart,setproductsInCart}) => {
 			if(productInCart.quantityAvailable>productInCart.quantityAdded){
 				productsInCart[indexProduct]={
 					...productInCart,
-					quantityAdded:Number(productInCart.quantityAdded)+1
+					quantityAdded:productInCart.quantityAdded+1
 				};
 			}else{
 				flag=false;
@@ -36,6 +36,7 @@ const AddToCart = ({product,productsInCart,setproductsInCart}) => {
 
     return (
 		<button 
+			className="btn btn-primary"
 			onClick={()=>handleAddCart()}>
 			Add to Cart
 		</button>
