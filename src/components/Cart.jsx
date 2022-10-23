@@ -19,7 +19,7 @@ const Cart = ({productsInCart,setproductsInCart}) => {
                 return this.subtotal-(Number(Cupon)/100)*this.subtotal;
             }
         })
-    }, [Cupon])
+    }, [Cupon,productsInCart])
     
     
     /**
